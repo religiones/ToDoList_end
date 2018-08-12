@@ -10,12 +10,12 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-      <servlet-name>userinfo</servlet-name>
-      <servlet-class>com.ToDoList.control.UserinfoController</servlet-class>
+      <servlet-name>login</servlet-name>
+      <servlet-class>com.ToDoList.control.login</servlet-class>
   </servlet>
 
   <servlet-mapping>
-      <servlet-name>userinfo</servlet-name>
-      <url-pattern>/UserinfoController</url-pattern>
+      <servlet-name>login</servlet-name>
+      <url-pattern>/login</url-pattern>
   </servlet-mapping>
 </web-app>
