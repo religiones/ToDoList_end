@@ -11,9 +11,9 @@ import com.ToDoList.model.User;
 
 @SuppressWarnings("serial")
 public class login extends HttpServlet{
-	private userinfo user;
-	private String id;
-	private String name;
+	private userinfo user = null;
+	private String id = null;
+	private String name = null;
 	private User myuser = new User();
 	
 	@Override

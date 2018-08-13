@@ -33,6 +33,7 @@ public class User {
 				user.Setuser_name(res.getString("user_name"));
 			}
 		}
+		myData.closeAll();
 		return user;
 	}
 }
