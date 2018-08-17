@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.ToDoList.entity.userinfo;
-import com.ToDoList.model.User;
+import com.ToDoList.model.Get_User;
 
 @SuppressWarnings("serial")
 public class login extends HttpServlet{
 	private userinfo user = null;
 	private String id = null;
 	private String name = null;
-	private User myuser = new User();
+	private Get_User myuser = new Get_User();
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
@@ -25,22 +25,21 @@ public class login extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		id = request.getParameter("id");
 		name = request.getParameter("name");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE"); 
+		response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, client_id, uuid, Authorization"); 
+		response.setContentType("application/json; charset=utf-8");
+		PrintWriter out = response.getWriter();
 		try {
 			user = myuser.getUser(id,name);
 			if(user == null) {
-				/*用户不存在且注册失败*/
-				response.setHeader("Access-Control-Allow-Origin", "*");
-				response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE"); 
-				response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, client_id, uuid, Authorization"); 
-				response.setContentType("application/json; charset=utf-8");
-				
-				PrintWriter out = response.getWriter();
+				/*鐢ㄦ埛鍒涘缓澶辫触*/
 				String jsonStr =  "{\"error\":\"0x777\"}";
 				out.write(jsonStr);
 				out.close();
 				
 			}else {
-				/*返回网页并传参*/
+				/*鐧诲綍鎴愬姛*/
 				response.sendRedirect("/ToDoList/index.html?name="+user.Getuser_name());
 			}
 		} catch (ClassNotFoundException | SQLException e) {

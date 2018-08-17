@@ -5,11 +5,10 @@ import java.sql.SQLException;
 import java.util.*;
 import com.google.gson.Gson;
 
-public class Task {
+public class Get_Task {
 	private String DataName = "jdbc:mysql://localhost:3306/ToDoList?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT";
 	private String UserName = "数据库用户名";
 	private String PassWord = "数据库密码";
-	
 	
 	/*获取任务*/
 	public String GetTasks(String id) throws ClassNotFoundException, SQLException {

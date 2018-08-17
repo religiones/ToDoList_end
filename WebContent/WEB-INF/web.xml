@@ -19,11 +19,47 @@
   </servlet-mapping>
   
   <servlet>
-      <servlet-name>Tasks</servlet-name>
-      <servlet-class>com.ToDoList.control.Tasks</servlet-class>
+      <servlet-name>tasks</servlet-name>
+      <servlet-class>com.ToDoList.control.tasks</servlet-class>
   </servlet>
   <servlet-mapping>
-      <servlet-name>Tasks</servlet-name>
-      <url-pattern>/Tasks</url-pattern>
+      <servlet-name>tasks</servlet-name>
+      <url-pattern>/tasks</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>newset</servlet-name>
+      <servlet-class>com.ToDoList.control.newset</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>newset</servlet-name>
+      <url-pattern>/newset</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>newlist</servlet-name>
+      <servlet-class>com.ToDoList.control.newlist</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>newlist</servlet-name>
+      <url-pattern>/newlist</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>newtask</servlet-name>
+      <servlet-class>com.ToDoList.control.newtask</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>newtask</servlet-name>
+      <url-pattern>/newtask</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>newsubtask</servlet-name>
+      <servlet-class>com.ToDoList.control.newsubtask</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>newsubtask</servlet-name>
+      <url-pattern>/newsubtask</url-pattern>
   </servlet-mapping>
 </web-app>

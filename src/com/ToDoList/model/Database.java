@@ -1,6 +1,7 @@
 package com.ToDoList.model;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,6 +12,7 @@ public class Database {
 	private String Database;
 	private Connection conn;
 	private Statement stmt;
+	private PreparedStatement pstm;
 	private ResultSet result;
 
 	public Database(String Database,String username,String password) {
@@ -19,6 +21,7 @@ public class Database {
 		this.Database = Database;
 		this.conn = null;
 		this.stmt = null;
+		this.pstm = null;
 		this.result = null;
 	}
 	
@@ -39,6 +42,9 @@ public class Database {
         if(conn!=null) {
             conn.close();
         }
+        if(pstm!=null) {
+        	pstm.close();
+        }
     }
     
 	/*Search information*/
@@ -52,8 +58,9 @@ public class Database {
 	public boolean Database_works(String sql){
 		boolean flag = false;
 		try {
-			stmt = conn.createStatement();
-			stmt.executeUpdate(sql);
+			System.out.println(sql);
+			pstm = conn.prepareStatement(sql); 
+			pstm.executeUpdate();
 			flag = true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
