@@ -6,14 +6,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.ToDoList.model.Task;
+import com.ToDoList.model.Memo;
 
-public class deletetask extends HttpServlet{
+public class deletememo extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private String user_id = null;
-	private String task_id = null;
-	private Task task = null;
-	
+	private String memo_id = null;
+	private Memo memo = null;
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		this.doPost(request, response);
@@ -23,16 +22,16 @@ public class deletetask extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("GBK"); //编码统一
 		user_id = request.getParameter("id");
-		task_id = request.getParameter("task_id");
+		memo_id = request.getParameter("memo_id");
 		/*设置回复格式*/
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE"); 
 		response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, client_id, uuid, Authorization"); 
 		response.setContentType("application/json; charList=utf-8");
 		PrintWriter out = response.getWriter();
-		task = new Task();
+		memo = new Memo();
 		try {
-			boolean result = task.delete_task(user_id,task_id);
+			boolean result = memo.delete_memo(user_id, memo_id);
 			if(result) {
 				/*删除成功*/
 				String jsonStr =  "{\"successfully\":\"001\"}";

@@ -24,7 +24,7 @@ public class finishtask extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("GBK"); //±àÂëÍ³Ò»
-		user_id = request.getParameter("user_id");
+		user_id = request.getParameter("id");
 		task_id = request.getParameter("task_id");
 		finish = Integer.parseInt(request.getParameter("finish_flag"));
 		deadline_time = request.getParameter("deadline_time");

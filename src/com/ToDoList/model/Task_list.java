@@ -40,7 +40,7 @@ public class Task_list {
 		tasks_list newList = new tasks_list();
 		newList.Setlist_name(name);
 		
-		String sql_update = "update tasks_list set list_name=\'"+newList.Getlist_name()+"\'"
+		String sql_update = "update tasks_list set list_name='"+newList.Getlist_name()+"'"
 				+"where list_yiban_fk="+user_id+"and list_id="+list_id;
 		boolean flag = myData.Database_works(sql_update);
 		myData.closeAll();
@@ -54,7 +54,7 @@ public class Task_list {
 		tasks_list newList = new tasks_list();
 		newList.Setlist_flag(finish);
 		
-		String sql_finish = "update tasks_set set list_flag=\'"+newList.Getlist_flag()+"\' where list_yiban_fk="+user_id+"and list_id="+list_id;
+		String sql_finish = "update tasks_set set list_flag='"+newList.Getlist_flag()+"' where list_yiban_fk="+user_id+"and list_id="+list_id;
 		boolean flag = myData.Database_works(sql_finish);
 		myData.closeAll();
 		return flag;

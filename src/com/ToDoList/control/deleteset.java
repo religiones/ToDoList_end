@@ -23,7 +23,7 @@ public class deleteset extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("GBK"); //编码统一
-		user_id = request.getParameter("user_id");
+		user_id = request.getParameter("id");
 		set_id = request.getParameter("set_id");
 		/*设置回复格式*/
 		response.setHeader("Access-Control-Allow-Origin", "*");

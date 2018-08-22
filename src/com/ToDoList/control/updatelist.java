@@ -24,7 +24,7 @@ public class updatelist extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("GBK"); //编码统一
-		user_id = request.getParameter("user_id");
+		user_id = request.getParameter("id");
 		list_id = request.getParameter("list_id");
 		name = request.getParameter("name");
 		/*设置回复格式*/

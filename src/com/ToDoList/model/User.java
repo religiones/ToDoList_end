@@ -36,7 +36,23 @@ public class User {
 		myData.closeAll();
 		return user;
 	}
-	
+	/*查询用户信息*/
+	public String GetUserinfo(String user_id) throws ClassNotFoundException, SQLException {
+		myData = new Database(DataName, UserName, PassWord);
+		myData.DatabaseConnection();
+		
+		String sql_search = "select * from userinfo where yiban_id="+user_id;
+		ResultSet res = myData.Search(sql_search);
+		user = new userinfo();
+		user.Setyiban_id(user_id);
+		while(res.next()) {
+			user.Setuser_name(res.getString("user_name"));
+			user.Setuser_nickname(res.getString("user_nickname"));
+			user.Setuser_sex(res.getString("user_sex"));
+		}
+		String json = "{\"yiban_id\" : "+user.Getyiban_id()+",\"user_name\" : "+user.Getuser_name()+",\"user_nickname\" : "+user.Getuser_nickname()+",\"user_sex\" : "+user.Getuser_sex()+"}";
+		return json;
+	}
 	/*修改用户信息*/
 	public boolean update_user(String user_id,String user_name,String user_nickname,String user_sex) throws ClassNotFoundException, SQLException {
 		myData = new Database(DataName, UserName, PassWord);

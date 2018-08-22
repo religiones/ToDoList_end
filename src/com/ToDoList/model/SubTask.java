@@ -54,7 +54,7 @@ public class SubTask {
 		subtask newSubtask = new subtask();
 		newSubtask.Setsubtask_flag(finish);
 		
-		String sql_finish = "update subtask set subtask_flag=\'"+newSubtask.Getsubtask_flag()+"\' where subtask_yiban_fk="+user_id+"and subtask_id="+subtask_id;
+		String sql_finish = "update subtask set subtask_flag='"+newSubtask.Getsubtask_flag()+"' where subtask_yiban_fk="+user_id+"and subtask_id="+subtask_id;
 		boolean flag = myData.Database_works(sql_finish);
 		myData.closeAll();
 		return flag;

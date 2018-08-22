@@ -23,7 +23,7 @@ public class newset extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("GBK"); //编码统一
-		user_id = request.getParameter("user_id");
+		user_id = request.getParameter("id");
 		name = request.getParameter("name");
 		description = request.getParameter("description");
 		/*设置回复格式*/

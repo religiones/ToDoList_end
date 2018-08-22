@@ -48,7 +48,7 @@ public class Task_set {
 		newSet.Setset_name(name);
 		newSet.Setset_description(description);
 		
-		String sql_update = "update tasks_set set set_name=\'"+newSet.Getset_name()+"\',set_description=\'"+newSet.Getset_description()+"\'"
+		String sql_update = "update tasks_set set set_name='"+newSet.Getset_name()+"',set_description='"+newSet.Getset_description()+"'"
 				+"where set_yiban_fk="+user_id+"and set_id="+set_id;
 		boolean flag = myData.Database_works(sql_update);
 		myData.closeAll();
@@ -62,7 +62,7 @@ public class Task_set {
 		tasks_set newSet = new tasks_set();
 		newSet.Setset_flag(finish);
 		
-		String sql_finish = "update tasks_set set set_flag=\'"+newSet.Getset_flag()+"\' where set_yiban_fk="+user_id+"and set_id="+set_id;
+		String sql_finish = "update tasks_set set set_flag='"+newSet.Getset_flag()+"' where set_yiban_fk="+user_id+"and set_id="+set_id;
 		boolean flag = myData.Database_works(sql_finish);
 		myData.closeAll();
 		return flag;

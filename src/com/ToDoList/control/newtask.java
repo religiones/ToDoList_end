@@ -30,7 +30,7 @@ public class newtask extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("GBK"); //±àÂëÍ³Ò»
-		user_id = request.getParameter("user_id");
+		user_id = request.getParameter("id");
 		list_id = request.getParameter("list_id");
 		name = request.getParameter("name");
 		description = request.getParameter("description");

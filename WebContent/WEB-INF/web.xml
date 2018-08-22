@@ -19,6 +19,15 @@
   </servlet-mapping>
   
   <servlet>
+      <servlet-name>getuserinfo</servlet-name>
+      <servlet-class>com.ToDoList.control.getuserinfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>getuserinfo</servlet-name>
+      <url-pattern>/getuserinfo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
       <servlet-name>updateuserinfo</servlet-name>
       <servlet-class>com.ToDoList.control.updateuserinfo</servlet-class>
   </servlet>
@@ -178,5 +187,41 @@
   <servlet-mapping>
       <servlet-name>finishsubtask</servlet-name>
       <url-pattern>/finishsubtask</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>newmemo</servlet-name>
+      <servlet-class>com.ToDoList.control.newmemo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>newmemo</servlet-name>
+      <url-pattern>/newmemo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>deletememo</servlet-name>
+      <servlet-class>com.ToDoList.control.deletememo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>deletememo</servlet-name>
+      <url-pattern>/deletememo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>getmemo</servlet-name>
+      <servlet-class>com.ToDoList.control.getmemo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>getmemo</servlet-name>
+      <url-pattern>/getmemo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>updatememo</servlet-name>
+      <servlet-class>com.ToDoList.control.updatememo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>updatememo</servlet-name>
+      <url-pattern>/updatememo</url-pattern>
   </servlet-mapping>
 </web-app>

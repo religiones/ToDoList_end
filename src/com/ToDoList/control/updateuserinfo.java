@@ -24,7 +24,7 @@ public class updateuserinfo extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("GBK"); //±àÂëÍ³Ò»
-		user_id = request.getParameter("yiban_id");
+		user_id = request.getParameter("id");
 		user_nickname = request.getParameter("nickname");
 		user_name = request.getParameter("name");
 		user_sex = request.getParameter("sex");

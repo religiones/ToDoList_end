@@ -6,9 +6,9 @@ import java.util.*;
 import com.google.gson.Gson;
 
 public class Get_Tasks {
-	private String DataName = "jdbc:mysql://localhost:3306/ToDoList?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT";
-	private String UserName = "数据库用户名";
-	private String PassWord = "数据库密码";
+	private static String DataName = "jdbc:mysql://localhost:3306/ToDoList?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT";
+	private static String UserName = "数据库用户名";
+	private static String PassWord = "数据库密码";
 	
 	/*获取任务*/
 	public String GetTasks(String id) throws ClassNotFoundException, SQLException {
@@ -17,10 +17,10 @@ public class Get_Tasks {
 		String sql_task = "select * from task where task_yiban_fk = "+id;
 		String sql_subtask = "select * from subtask where subtask_yiban_fk = "+id;
 			
-		String Tasks_set = getTask_array(sql_tasks_set);
-		String Tasks_list = getTask_array(sql_tasks_list);
-		String Task = getTask_array(sql_task);
-		String SubTask = getTask_array(sql_subtask);
+		String Tasks_set = get_array(sql_tasks_set);
+		String Tasks_list = get_array(sql_tasks_list);
+		String Task = get_array(sql_task);
+		String SubTask = get_array(sql_subtask);
 
 		String json = "{\"Tasks_set\" : "+Tasks_set+", \"Tasks_list\" : "+Tasks_list+
 				", \"Task\" : "+Task+", \"SubTask\" : "+SubTask+"}";
@@ -29,7 +29,7 @@ public class Get_Tasks {
 	}
 	
 	/*以数组的方式存储json对象*/
-	public String getTask_array(String sql) throws ClassNotFoundException, SQLException {
+	public static String get_array(String sql) throws ClassNotFoundException, SQLException {
 		Database myData = new Database(DataName, UserName, PassWord);
 		myData.DatabaseConnection();
 		ResultSet res = myData.Search(sql);
@@ -51,7 +51,7 @@ public class Get_Tasks {
 	}
 	
 	/*获取列名 并存入数组*/
-	public String[] getColumnName(ResultSet res) throws SQLException {
+	public static String[] getColumnName(ResultSet res) throws SQLException {
 		ResultSetMetaData rsmd = res.getMetaData();
 		int count = rsmd.getColumnCount();
 		String[] Column=new String[count];

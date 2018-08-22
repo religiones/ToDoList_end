@@ -22,7 +22,7 @@ public class deletesubtask extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("GBK"); //编码统一
-		user_id = request.getParameter("user_id");
+		user_id = request.getParameter("id");
 		subtask_id = request.getParameter("subtask_id");
 		/*设置回复格式*/
 		response.setHeader("Access-Control-Allow-Origin", "*");

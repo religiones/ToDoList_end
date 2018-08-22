@@ -25,7 +25,7 @@ public class newsubtask extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("GBK"); //编码统一
-		user_id = request.getParameter("user_id");
+		user_id = request.getParameter("id");
 		name = request.getParameter("name");
 		task_id = request.getParameter("task_id");
 		/*设置回复格式*/

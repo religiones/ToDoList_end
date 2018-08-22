@@ -24,7 +24,7 @@ public class finishset extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("GBK"); //编码统一
-		user_id = request.getParameter("user_id");
+		user_id = request.getParameter("id");
 		set_id = request.getParameter("set_id");
 		finish = Integer.parseInt(request.getParameter("finish_flag"));
 		/*设置回复格式*/
