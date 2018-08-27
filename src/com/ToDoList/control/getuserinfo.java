@@ -20,13 +20,14 @@ public class getuserinfo extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("GBK"); //±àÂëÍ³Ò»
-		user_id = request.getParameter("id");
+		request.setCharacterEncoding("utf-8"); 
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE"); 
 		response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, client_id, uuid, Authorization"); 
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
+		user_id = request.getParameter("id");
+		user = new User();
 		try {
 				String jsonStr =  user.GetUserinfo(user_id);
 				out.write(jsonStr);

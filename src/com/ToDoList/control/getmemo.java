@@ -20,12 +20,13 @@ public class getmemo extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("GBK"); //±àÂëÍ³Ò»
+		request.setCharacterEncoding("utf-8"); 
 		user_id = request.getParameter("id");
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE"); 
 		response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, client_id, uuid, Authorization"); 
 		response.setContentType("application/json; charset=utf-8");
+		memo = new Memo();
 		PrintWriter out = response.getWriter();
 		try {
 				String jsonStr =  memo.Get_memo(user_id);

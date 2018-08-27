@@ -15,7 +15,7 @@ public class login extends HttpServlet{
 	private userinfo user = null;
 	private String id = null;
 	private String name = null;
-	private User myuser = new User();
+	private User myuser = null;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
@@ -24,7 +24,8 @@ public class login extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("GBK"); //编码统一
+		request.setCharacterEncoding("utf-8");
+		myuser = new User();
 		id = request.getParameter("id");
 		name = request.getParameter("name");
 		response.setHeader("Access-Control-Allow-Origin", "*");
@@ -32,20 +33,21 @@ public class login extends HttpServlet{
 		response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, client_id, uuid, Authorization"); 
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		try {
-			user = myuser.getUser(id,name);
-			if(user == null) {
-				/*用户创建失败*/
-				String jsonStr =  "{\"error\":\"0x777\"}";
-				out.write(jsonStr);
-				out.close();
-			}else {
-				/*登录成功*/
-				response.sendRedirect("/ToDoList/index.html?name="+user.Getuser_name());
+			try {
+				user = myuser.getUser(id, name);
+				if(user == null) {
+					/*failed*/
+					String jsonStr =  "{\"error\":\"0x777\"}";
+					out.write(jsonStr);
+					out.close();
+				}else {
+					/*successful*/
+					String username = new String(user.Getuser_name().getBytes("utf-8"),"iso-8859-1");
+					response.sendRedirect("http://localhost:8080/ToDoList/index.html?name="+username);
+				}
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }

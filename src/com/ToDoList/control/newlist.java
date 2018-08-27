@@ -22,11 +22,10 @@ public class newlist extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		request.setCharacterEncoding("GBK"); //编码统一
+		request.setCharacterEncoding("utf-8"); 
 		set_id = request.getParameter("set_id");
-		user_id = request.getParameter("user_id");
+		user_id = request.getParameter("id");
 		name = request.getParameter("name");
-		/*设置回复格式*/
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE"); 
 		response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, client_id, uuid, Authorization"); 
@@ -36,12 +35,12 @@ public class newlist extends HttpServlet{
 		try {
 			boolean result = task_list.add_list(user_id, name, set_id);
 			if(result) {
-				/*添加成功*/
+				/*successful*/
 				String jsonStr =  "{\"successfully\":\"001\"}";
 				out.write(jsonStr);
 				out.close();
 			}else {
-				/*添加失败*/
+				/*failed*/
 				String jsonStr =  "{\"error\":\"0x777\"}";
 				out.write(jsonStr);
 				out.close();

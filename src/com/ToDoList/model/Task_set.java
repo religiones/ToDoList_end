@@ -10,7 +10,7 @@ public class Task_set {
 	private String PassWord = "Root.206814";
 	private Date date = null;
 	private Database myData = null;
-	/*增*/
+	/*add*/
 	public boolean add_set(String user_id,String name,String description) throws ClassNotFoundException, SQLException {
 		date = new Date();
 		Timestamp timeStamp = new Timestamp(date.getTime());
@@ -29,17 +29,17 @@ public class Task_set {
 		myData.closeAll();
 		return flag;
 	}
-	/*删*/
+	/*delete*/
 	public boolean delete_set(String user_id,String set_id) throws ClassNotFoundException, SQLException {
 		myData = new Database(DataName, UserName, PassWord);
 		myData.DatabaseConnection();
 		
-		String sql_delete_set ="delete from tasks_set where set_yiban_fk="+user_id+"and set_id="+set_id;
+		String sql_delete_set ="delete from tasks_set where set_yiban_fk= '"+user_id+"' and set_id= '"+set_id+"'";
 		boolean flag = myData.Database_works(sql_delete_set);
 		myData.closeAll();
 		return flag;
 	}
-	/*改*/
+	/*update*/
 	public boolean update_set(String user_id,String set_id,String name,String description) throws ClassNotFoundException, SQLException {
 		myData = new Database(DataName, UserName, PassWord);
 		myData.DatabaseConnection();
@@ -49,12 +49,12 @@ public class Task_set {
 		newSet.Setset_description(description);
 		
 		String sql_update = "update tasks_set set set_name='"+newSet.Getset_name()+"',set_description='"+newSet.Getset_description()+"'"
-				+"where set_yiban_fk="+user_id+"and set_id="+set_id;
+				+"where set_yiban_fk='"+user_id+"'and set_id='"+set_id+"'";
 		boolean flag = myData.Database_works(sql_update);
 		myData.closeAll();
 		return flag;
 	}
-	/*完成任务集*/
+	/*finish*/
 	public boolean finish_set(String user_id,String set_id,int finish) throws ClassNotFoundException, SQLException {
 		myData = new Database(DataName, UserName, PassWord);
 		myData.DatabaseConnection();
@@ -62,7 +62,7 @@ public class Task_set {
 		tasks_set newSet = new tasks_set();
 		newSet.Setset_flag(finish);
 		
-		String sql_finish = "update tasks_set set set_flag='"+newSet.Getset_flag()+"' where set_yiban_fk="+user_id+"and set_id="+set_id;
+		String sql_finish = "update tasks_set set set_flag='"+newSet.Getset_flag()+"' where set_yiban_fk='"+user_id+"'and set_id='"+set_id+"'";
 		boolean flag = myData.Database_works(sql_finish);
 		myData.closeAll();
 		return flag;

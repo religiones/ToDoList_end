@@ -51,6 +51,7 @@ public class Database {
 	public ResultSet Search(String sql) throws SQLException {
 		stmt = conn.createStatement();
 		result = stmt.executeQuery(sql);
+		System.out.println(sql);
 		return result;
 	}
 	
@@ -59,8 +60,11 @@ public class Database {
 		boolean flag = false;
 		try {
 			pstm = conn.prepareStatement(sql); 
-			pstm.executeUpdate();
-			flag = true;
+			int count = pstm.executeUpdate();
+			System.out.println(sql);
+			if(count != 0) {
+				flag = true;
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

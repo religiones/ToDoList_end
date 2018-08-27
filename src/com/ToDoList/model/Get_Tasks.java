@@ -7,15 +7,15 @@ import com.google.gson.Gson;
 
 public class Get_Tasks {
 	private static String DataName = "jdbc:mysql://localhost:3306/ToDoList?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT";
-	private static String UserName = "数据库用户名";
-	private static String PassWord = "数据库密码";
+	private static String UserName = "root";
+	private static String PassWord = "Root.206814";
 	
-	/*获取任务*/
+	/*search*/
 	public String GetTasks(String id) throws ClassNotFoundException, SQLException {
-		String sql_tasks_set = "select * from tasks_set where set_yiban_fk = "+id;
-		String sql_tasks_list = "select * from tasks_list where list_yiban_fk = "+id;
-		String sql_task = "select * from task where task_yiban_fk = "+id;
-		String sql_subtask = "select * from subtask where subtask_yiban_fk = "+id;
+		String sql_tasks_set = "select * from tasks_set where set_yiban_fk = '"+id+"'";
+		String sql_tasks_list = "select * from tasks_list where list_yiban_fk = '"+id+"'";
+		String sql_task = "select * from task where task_yiban_fk = '"+id+"'";
+		String sql_subtask = "select * from subtask where subtask_yiban_fk = '"+id+"'";
 			
 		String Tasks_set = get_array(sql_tasks_set);
 		String Tasks_list = get_array(sql_tasks_list);
@@ -28,29 +28,28 @@ public class Get_Tasks {
 		return json;
 	}
 	
-	/*以数组的方式存储json对象*/
+	/*get array*/
 	public static String get_array(String sql) throws ClassNotFoundException, SQLException {
 		Database myData = new Database(DataName, UserName, PassWord);
 		myData.DatabaseConnection();
 		ResultSet res = myData.Search(sql);
 		String[] ColumnName = getColumnName(res);
 		List<Map<String,String>> list = new ArrayList<Map<String,String>>();
-        //数据保存为JSON格式
         while(res.next()) {
-            Map<String,String> map = new HashMap<String,String>();//要每次创建一个新的映射表，不然只会保存最后一组数据。
+            Map<String,String> map = new HashMap<String,String>();
             for(int i=0;i<ColumnName.length;i++) {
             	map.put(ColumnName[i], res.getString(i+1));
             }
-            list.add(map);//数据保存在list中
+            list.add(map);
         }
-        //用GSON包中的方法序列化json字符串
+        /*use gson*/
         Gson gson = new Gson();
         String jsonstr = gson.toJson(list); 
 		myData.closeAll();
 		return jsonstr;
 	}
 	
-	/*获取列名 并存入数组*/
+	/*get ColumnName*/
 	public static String[] getColumnName(ResultSet res) throws SQLException {
 		ResultSetMetaData rsmd = res.getMetaData();
 		int count = rsmd.getColumnCount();

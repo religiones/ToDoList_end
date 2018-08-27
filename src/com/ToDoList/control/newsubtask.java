@@ -24,11 +24,10 @@ public class newsubtask extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		request.setCharacterEncoding("GBK"); //编码统一
+		request.setCharacterEncoding("utf-8");
 		user_id = request.getParameter("id");
 		name = request.getParameter("name");
 		task_id = request.getParameter("task_id");
-		/*设置回复格式*/
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE"); 
 		response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, client_id, uuid, Authorization"); 
@@ -39,12 +38,12 @@ public class newsubtask extends HttpServlet{
 		try {
 			boolean result = subtask.add_subtask(user_id, task_id, name);
 			if(result) {
-				/*添加成功*/
+				/*successful*/
 				String jsonStr =  "{\"successfully\":\"001\"}";
 				out.write(jsonStr);
 				out.close();
 			}else {
-				/*添加失败*/
+				/*failed*/
 				String jsonStr =  "{\"error\":\"0x777\"}";
 				out.write(jsonStr);
 				out.close();
